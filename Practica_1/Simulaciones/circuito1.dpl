@@ -1,0 +1,32 @@
+<Qucs Schematic 0.0.21>
+<Properties>
+  <View=0,-50,860,800,1,0,50>
+  <Grid=10,10,0>
+  <DataSet=circuito1.dat>
+  <DataDisplay=circuito1.sch>
+  <OpenDisplay=1>
+  <Script=circuito1.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Title>
+  <FrameText1=Drawn By:>
+  <FrameText2=Date:>
+  <FrameText3=Revision:>
+</Properties>
+<Symbol>
+</Symbol>
+<Components>
+</Components>
+<Wires>
+</Wires>
+<Diagrams>
+  <Rect 200 270 240 160 3 #c0c0c0 1 00 1 -6.77467e-24 5 20 1 -0.00194272 0.01 0.0213699 1 -1 1 1 315 0 225 "" "" "">
+	<"ngspice/i(vpri)@v(prv)" #0000ff 0 3 0 0 0>
+  </Rect>
+  <Tab 520 280 300 200 3 #c0c0c0 1 00 1 9 1 1 1 0 1 1 1 0 1 201 315 0 225 "" "" "">
+	<"ngspice/i(vpri)" #0000ff 0 3 1 0 0>
+	<"ngspice/v(prv)" #0000ff 0 3 1 0 0>
+  </Tab>
+</Diagrams>
+<Paintings>
+</Paintings>

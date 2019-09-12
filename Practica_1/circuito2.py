@@ -2,11 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
-from pandas.plotting import table # EDIT: see deprecation warnings below
 
-ax = plt.subplot(111, frame_on=False) # no visible frame
-ax.xaxis.set_visible(False)  # hide the x axis
-ax.yaxis.set_visible(False)  # hide the y axis
 
 data = pd.read_csv("circuito2.csv")
 simul = pd.read_csv("circuito2_sim.csv")
@@ -18,31 +14,17 @@ R = 2130 #Ohm
 
 coef, cov = np.polyfit(np.array(data["V"]), np.array(data["I"]), 1, cov=True)
 
+
 x = np.linspace(0,20,100)
-
-<<<<<<< HEAD
-print(1/slope)
-#plt.plot(x, slope*x + intercept, 'r')
-
-#plt.errorbar(data['V'],data['I'], xerr = 0.01, yerr = 0.0001)
-#plt.plot(simul['V(R1.nA)'],simul['I(R1.nA)'], 'b')
-
-#table(ax, data)  # where df is your data frame
-
-#plt.savefig('mytable.png')
-
-
-plt.show()
-=======
 fig, ax = plt.subplots(nrows=1, ncols=2, sharey=True, figsize=(12,8))
 
 # ax[0].plot(x, slope*x + intercept, '-k', linewidth=1)
-ax[0].plot(x, coef[0]*x + coef[1], '-k', linewidth=1)
-ax[1].plot(simul['V(R1.nA)'],simul['I(R1.nA)'], '-k', linewidth=1)
+ax[0].plot(x, coef[0]*x + coef[1], '-k', linewidth=1, color = 'b')
+ax[1].plot(simul['V(R1.nA)'],simul['I(R1.nA)'], '-k', linewidth=1, color = 'r')
 
 ax[0].set_ylabel("Current")
-ax[0].text(5,0.004, r"$I = \left( {:.12f} \pm {:.12f} \right) \; V $".format(coef[0], cov[0,0]), fontsize=10)
-ax[0].text(5.5,0.0038,r"$- \left( {:.10f} \pm {:.10f} \right)$".format(np.abs(coef[1]), cov[1,1]), fontsize=10)
+ax[0].text(5,0.004, r"$I = \left( {:.12f} \pm {:.12f} \right) \; V $" "\n" r"$- \left( {:.10f} \pm {:.10f} \right)$".format(coef[0], cov[0,0], coef[0], cov[1,1]), fontsize=10)
+
 
 for ax,name in zip(ax, ["Linear fit","Simulation"]):
     ax.errorbar(data['V'],data['I'], fmt=".", color="black",xerr = 0.01, yerr = 0.0001)
@@ -54,9 +36,5 @@ for ax,name in zip(ax, ["Linear fit","Simulation"]):
     ax.set_xlabel("Voltage")
 
 
-print(simul)
-# print(intercept)
 plt.show()
 
-fig.savefig("circuito2_plot.png",format="png")
->>>>>>> 8a3c5e040c604a480c21082f6f7cdf19ff9f7708
