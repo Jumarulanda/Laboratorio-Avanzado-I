@@ -1,0 +1,28 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def fit_n_plot(x, y, ux, uy, intercept, xlabel, ylabel,figsize=(8,10)):
+
+    if not intercept:
+
+        m = np.sum(x*y)/np.sum(x*x)
+        um = uy/np.sqrt(np.sum(x*x))
+
+        # ---------------------------------------
+        
+        x_range = np.linspace(np.min(x), np.max(x)+len(x)/10, 1000)
+        y_range = x_range*m
+        
+        fig, ax = plt.subplots()
+
+        ax.errorbar(x, y, xerr=ux, yerr=uy, fmt=".", ecolor="red")
+
+        ax.plot(x_range, y_range, "k-")
+
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+
+        ax.set_xlim(np.min(x), np.max(x)+len(x)/10)
+        ax.set_ylim(np.min(y_range), np.max(y_range)+len(y_range)/10)
+
+        return ax, fig
